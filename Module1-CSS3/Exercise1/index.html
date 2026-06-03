@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3 Exercise 1 - Inline, Internal, External CSS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Internal CSS: good for page-specific styles that are not reused elsewhere. */
+    body {
+      background: #eef4fb;
+      font-family: 'Roboto', Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <!-- Inline CSS: used here only to show one heading in red, as requested. -->
+    <h1 style="color: red;">Local Community Event Portal</h1>
+    <p class="lead">This page demonstrates inline, internal, and external CSS together.</p>
+
+    <section class="panel">
+      <h2>Reusable styles live in styles.css</h2>
+      <p>These styles are easier to maintain because they are shared and organized in one file.</p>
+      <a class="btn" href="#">Learn more</a>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f8fafc;
+}
+
+.wrap {
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 24px;
+}
+
+.eventCard {
+  margin: 20px 0;
+  padding: 20px;
+  border: 2px solid #94a3b8;
+  outline: 2px solid transparent;
+  background: white;
+}
+
+.form input:focus {
+  outline: 3px solid #f59e0b;
+}
+
+.hidden-demo {
+  visibility: hidden;
+}
+
+.none-demo {
+  display: none;
+}

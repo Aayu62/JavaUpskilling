@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML5 Exercise 8 - Saving Preferences</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 24px; }
+    select, button { padding: 10px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Save Event Preferences</h1>
+  <select id="eventType">
+    <option value="">Choose event type</option>
+    <option>Music Night</option>
+    <option>Food Fair</option>
+    <option>Art Show</option>
+  </select>
+  <button onclick="savePreference()">Save Preference</button>
+  <button onclick="clearPreferences()">Clear Preferences</button>
+
+  <p id="status"></p>
+
+  <script>
+    const select = document.getElementById('eventType');
+    const status = document.getElementById('status');
+
+    function savePreference() {
+      localStorage.setItem('preferredEvent', select.value);
+      sessionStorage.setItem('lastSaved', select.value);
+      status.textContent = 'Preference saved.';
+    }
+
+    function clearPreferences() {
+      localStorage.clear();
+      sessionStorage.clear();
+      select.value = '';
+      status.textContent = 'Preferences cleared.';
+    }
+
+    window.addEventListener('load', function () {
+      const saved = localStorage.getItem('preferredEvent');
+      if (saved) select.value = saved;
+    });
+  </script>
+</body>
+</html>

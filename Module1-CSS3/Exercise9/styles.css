@@ -1,0 +1,17 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f8fafc;
+}
+
+.news {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 24px;
+}
+
+.columns {
+  column-count: 2;
+  column-gap: 30px;
+  column-rule: 1px solid gray;
+}

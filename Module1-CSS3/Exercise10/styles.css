@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f8fafc;
+}
+
+.site-header {
+  background: #0f172a;
+  padding: 16px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.layout {
+  width: min(92vw, 1100px);
+  margin: 24px auto;
+}
+
+.hero {
+  min-height: 30vh;
+  padding: 5vw;
+  background: #dbeafe;
+}
+
+.cards {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.card {
+  flex: 1;
+  padding: 24px;
+  background: white;
+  border: 1px solid #cbd5e1;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+
+  .hero {
+    padding: 24px;
+    font-size: 0.95rem;
+  }
+}

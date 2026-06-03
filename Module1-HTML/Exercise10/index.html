@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML5 Exercise 10 - Debugging Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 24px; }
+    .panel { padding: 16px; border: 1px solid #cbd5e1; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Debugging with DevTools</h1>
+  <p>Open the Console and Inspect tabs to watch how the page behaves.</p>
+  <div class="panel" id="debugPanel">Watch this panel in DevTools.</div>
+
+  <script>
+    const message = 'Debugging is easier when you log values clearly.';
+    console.log('Console message:', message);
+
+    const panel = document.getElementById('debugPanel');
+    panel.addEventListener('click', function () {
+      console.log('Panel clicked');
+      panel.style.background = '#dbeafe';
+    });
+
+    let counter = 1;
+    console.log('Counter value:', counter);
+    counter += 1;
+    console.log('Counter after increment:', counter);
+  </script>
+</body>
+</html>

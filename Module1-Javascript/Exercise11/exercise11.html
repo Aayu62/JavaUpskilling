@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Exercise 11</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 24px; }
+    .error { color: #dc2626; min-height: 1.2em; }
+  </style>
+</head>
+<body>
+  <h1>Registration Form</h1>
+  <form id="registerForm">
+    <input name="name" type="text" placeholder="Name">
+    <div class="error" data-error="name"></div>
+    <input name="email" type="email" placeholder="Email">
+    <div class="error" data-error="email"></div>
+    <select name="event">
+      <option value="">Select event</option>
+      <option>Music Night</option>
+      <option>Food Fair</option>
+    </select>
+    <div class="error" data-error="event"></div>
+    <button type="submit">Register</button>
+  </form>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML5 Exercise 5 - Event Registration Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8fafc; padding: 24px; }
+    form { max-width: 700px; margin: 0 auto; background: white; padding: 24px; border: 1px solid #cbd5e1; }
+    label, input, select, textarea, button, output { display: block; width: 100%; margin-top: 10px; }
+    input, select, textarea { padding: 10px; }
+    output { margin-top: 16px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <form id="registrationForm">
+    <h1>Register for an Event</h1>
+    <input type="text" id="name" placeholder="Full name" required autofocus>
+    <input type="email" id="email" placeholder="Email address" required>
+    <input type="date" id="date" required>
+    <select id="eventType" required>
+      <option value="">Select event type</option>
+      <option>Music Night</option>
+      <option>Food Fair</option>
+      <option>Art Show</option>
+    </select>
+    <textarea id="message" rows="5" placeholder="Your message"></textarea>
+    <button type="submit">Submit Registration</button>
+    <output id="confirmation">Waiting for submission...</output>
+  </form>
+  <script>
+    const form = document.getElementById('registrationForm');
+    const output = document.getElementById('confirmation');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      output.textContent = `Thank you, ${document.getElementById('name').value}. Your registration has been received.`;
+    });
+  </script>
+</body>
+</html>

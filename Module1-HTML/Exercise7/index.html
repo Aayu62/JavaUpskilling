@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML5 Exercise 7 - Video Invite</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 24px; }
+  </style>
+</head>
+<body>
+  <h1>Event Promo Video</h1>
+  <video width="420" controls oncanplay="document.getElementById('videoMsg').textContent='Video ready to play'">
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+  </video>
+  <p id="videoMsg"></p>
+
+  <script>
+    window.addEventListener('beforeunload', function (e) {
+      e.preventDefault();
+      e.returnValue = '';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f8fafc;
+}
+
+.wrap {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 24px;
+}
+
+.note {
+  background: #fef3c7;
+  padding: 12px;
+  border-left: 4px solid #f59e0b;
+}
+
+.grid {
+  display: flex;
+  gap: 16px;
+}
+
+.box {
+  flex: 1;
+  padding: 24px;
+  background: white;
+  border: 1px solid #cbd5e1;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    flex-direction: column;
+  }
+}

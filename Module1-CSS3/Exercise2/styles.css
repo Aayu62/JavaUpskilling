@@ -1,0 +1,23 @@
+/* Base page styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f9fc;
+}
+
+/* Layout wrapper */
+.wrapper {
+  max-width: 800px;
+  margin: 48px auto;
+  padding: 24px;
+}
+
+/* Style for main CTA button */
+.cta-button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}

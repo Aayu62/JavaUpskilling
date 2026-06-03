@@ -1,0 +1,29 @@
+/* Header styles */
+.page {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 24px;
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: #234;
+}
+
+/* Panel styles */
+.panel {
+  background: white;
+  border: 1px solid #d7e1ee;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+}
