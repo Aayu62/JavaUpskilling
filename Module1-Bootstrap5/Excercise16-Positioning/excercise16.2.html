@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 16.2 - Badge Overlay</title>
+  <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.min.css">
+</head>
+<body>
+  <main class="container py-5">
+    <!-- position-relative creates the reference box for the absolute badge. -->
+    <div class="position-relative d-inline-block">
+      <img src="https://via.placeholder.com/400x250" class="img-fluid rounded-3" alt="Sample image">
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        New
+      </span>
+    </div>
+  </main>
+  <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

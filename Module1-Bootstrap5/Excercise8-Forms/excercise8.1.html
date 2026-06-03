@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 8.1 - Registration Form</title>
+  <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.min.css">
+</head>
+<body>
+  <main class="container py-5">
+    <!-- form-control gives inputs a consistent Bootstrap look. -->
+    <!-- form-check styles checkbox rows. -->
+    <!-- input-group combines multiple controls into one visual unit, such as a username field with a prefix. -->
+    <form class="row g-3 col-lg-8 mx-auto border rounded-3 p-4 bg-light">
+      <div class="col-md-6">
+        <label class="form-label" for="firstName">First name</label>
+        <input class="form-control" id="firstName" type="text" placeholder="Asha">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label" for="lastName">Last name</label>
+        <input class="form-control" id="lastName" type="text" placeholder="Kumar">
+      </div>
+      <div class="col-12">
+        <label class="form-label" for="username">Username</label>
+        <div class="input-group">
+          <span class="input-group-text">@</span>
+          <input class="form-control" id="username" type="text" placeholder="username">
+        </div>
+      </div>
+      <div class="col-12 form-check ms-3">
+        <input class="form-check-input" type="checkbox" id="terms">
+        <label class="form-check-label" for="terms">I agree to the terms</label>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Register</button>
+      </div>
+    </form>
+  </main>
+  <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

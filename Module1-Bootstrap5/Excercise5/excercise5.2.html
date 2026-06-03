@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 5.2 - Reordering Columns</title>
+  <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.min.css">
+</head>
+<body>
+  <main class="container py-5">
+    <!-- order-md-2 and order-md-1 swap the columns on medium screens and up. -->
+    <!-- On mobile, the columns stay in the HTML order so the reading order remains simple for beginners. -->
+    <div class="row g-3">
+      <aside class="col-12 col-md-4 order-md-2">
+        <div class="p-3 bg-warning-subtle border rounded-3">
+          <h2 class="h5">Sidebar</h2>
+          <p class="mb-0">This panel moves to the right on medium screens and larger.</p>
+        </div>
+      </aside>
+      <section class="col-12 col-md-8 order-md-1">
+        <div class="p-3 bg-primary-subtle border rounded-3">
+          <h2 class="h5">Main content</h2>
+          <p class="mb-0">This section appears first on desktop, but stays below the sidebar in the HTML source.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

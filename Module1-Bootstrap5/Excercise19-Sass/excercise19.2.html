@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 19.2 - Custom Sass Variables</title>
+  <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <style>
+    /* This small custom style simulates the effect of changing Bootstrap Sass variables and recompiling. */
+    .custom-demo {
+      background: #0d6efd;
+      border-radius: 1rem;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <main class="container py-5">
+    <div class="custom-demo p-4">
+      <h1 class="h4">Custom primary color and radius</h1>
+      <p class="mb-0">In a real Sass build, these values would come from `_variables.scss` before recompiling Bootstrap.</p>
+    </div>
+  </main>
+  <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

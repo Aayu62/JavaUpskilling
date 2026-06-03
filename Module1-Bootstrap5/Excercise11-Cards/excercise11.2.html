@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 11.2 - Media Object Layout</title>
+  <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.min.css">
+</head>
+<body>
+  <main class="container py-5">
+    <!-- Bootstrap 5 no longer uses the old media object component, so flex utilities recreate the pattern. -->
+    <div class="d-flex gap-3 align-items-start">
+      <img src="https://via.placeholder.com/96" class="rounded" alt="Avatar">
+      <div>
+        <h2 class="h5 mb-1">Article title</h2>
+        <p class="mb-0 text-muted">The image stays on the left, and the text flows beside it using flexbox.</p>
+      </div>
+    </div>
+  </main>
+  <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 7.1 - Responsive Flex Navbar</title>
+  <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.min.css">
+</head>
+<body>
+  <header class="container py-4">
+    <!-- d-flex turns the nav into a flex container. -->
+    <!-- flex-column stacks links on small screens, and flex-md-row changes them into a row on medium screens and up. -->
+    <nav class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 p-3 border rounded-3 bg-light">
+      <a class="fw-bold text-decoration-none text-dark" href="#">MySite</a>
+      <div class="d-flex flex-column flex-md-row gap-2">
+        <a class="btn btn-outline-primary" href="#">Home</a>
+        <a class="btn btn-outline-primary" href="#">About</a>
+        <a class="btn btn-outline-primary" href="#">Contact</a>
+      </div>
+    </nav>
+  </header>
+  <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

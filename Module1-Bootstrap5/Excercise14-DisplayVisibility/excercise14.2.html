@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 14.2 - Responsive Sidebar</title>
+  <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.min.css">
+</head>
+<body>
+  <main class="container py-5">
+    <div class="row">
+      <!-- This sidebar is hidden on mobile and appears on tablets and larger screens. -->
+      <aside class="col-md-4 d-none d-md-block">
+        <div class="border rounded-3 p-3 bg-light">Sidebar content</div>
+      </aside>
+      <section class="col-12 col-md-8">
+        <div class="border rounded-3 p-3">Main content area</div>
+      </section>
+    </div>
+  </main>
+  <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

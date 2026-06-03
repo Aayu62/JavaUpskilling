@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 9.2 - Button Groups</title>
+  <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.min.css">
+</head>
+<body>
+  <main class="container py-5">
+    <!-- btn-group keeps buttons attached as one control. -->
+    <!-- Toggle buttons use a hidden checkbox so the pressed state can stay active. -->
+    <div class="btn-group mb-4" role="group" aria-label="Basic button group">
+      <button class="btn btn-outline-primary">Left</button>
+      <button class="btn btn-outline-primary">Middle</button>
+      <button class="btn btn-outline-primary">Right</button>
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Toggle buttons">
+      <input type="checkbox" class="btn-check" id="check1">
+      <label class="btn btn-outline-success" for="check1">Option A</label>
+      <input type="checkbox" class="btn-check" id="check2">
+      <label class="btn btn-outline-success" for="check2">Option B</label>
+    </div>
+  </main>
+  <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

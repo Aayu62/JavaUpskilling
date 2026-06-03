@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 14.1 - Display Utilities</title>
+  <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.min.css">
+</head>
+<body>
+  <main class="container py-5">
+    <!-- d-none hides the box on all screen sizes. -->
+    <!-- d-md-block shows this box starting at the medium breakpoint. -->
+    <!-- d-lg-flex shows the layout as flex only on large screens and above. -->
+    <div class="d-none">Hidden everywhere</div>
+    <div class="d-md-block d-none bg-info-subtle border p-3 mb-3">Visible on md and up</div>
+    <div class="d-lg-flex gap-3 bg-light border p-3">
+      <div class="p-2 bg-white border">Flex item A</div>
+      <div class="p-2 bg-white border">Flex item B</div>
+    </div>
+  </main>
+  <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
