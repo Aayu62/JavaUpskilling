@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-course-card',
@@ -9,7 +9,14 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 export class CourseCard implements OnChanges {
 
   @Input()
-  course: any;
+  course!: {
+    id: number;
+    name: string;
+    code: string;
+    credits: number;
+  };
+  @Output()
+  enrollRequested = new EventEmitter<number>();
 
   ngOnChanges(changes: SimpleChanges): void {
 
