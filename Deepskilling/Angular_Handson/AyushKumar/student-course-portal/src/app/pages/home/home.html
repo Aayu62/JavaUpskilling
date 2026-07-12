@@ -1,4 +1,4 @@
-<h1>Welcome to Student Course Portal</h1>
+<h1>{{ portalName }}</h1>
 
 <p>
   Manage your courses, view your profile, and track your academic progress
@@ -21,3 +21,32 @@
     <p>3.8</p>
   </div>
 </div>
+<hr>
+
+<button [disabled]="!isPortalActive"
+        (click)="onEnrollClick()">
+  Enroll Now
+</button>
+
+<p>{{ message }}</p>
+
+<hr>
+
+<input
+  type="text"
+  placeholder="Search courses..."
+  [(ngModel)]="searchTerm">
+
+<p>Searching for: {{ searchTerm }}</p>
+
+<!-- [property] is one-way binding -->
+<!-- Example: [disabled]="!isPortalActive" -->
+<!-- Means: the value comes from the component -->
+<!-- If component changes, DOM updates -->
+<!-- But typing/clicking in DOM does NOT change the component -->
+
+<!-- [(ngModel)] is two-way binding -->
+<!-- Example: [(ngModel)]="searchTerm" -->
+<!-- Means: value flows both ways -->
+<!-- If component changes, DOM updates -->
+<!-- If user types in DOM, component updates too -->
