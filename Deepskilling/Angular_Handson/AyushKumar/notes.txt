@@ -1,0 +1,58 @@
+Angular Project Notes
+
+1. angular.json : Stores the Angular workspace configuration, including build, serve, assets, styles, and project settings.
+
+2. tsconfig.json : Main TypeScript configuration file that defines compiler options shared across the project.
+
+3. tsconfig.app.json : TypeScript configuration specifically for compiling the Angular application source code.
+
+4. package.json : Contains the project's metadata, dependencies, and npm scripts used to build and run the application.
+
+5. src/main.ts : The entry point of the Angular application that bootstraps the root component.
+
+6. src/app/app.config.ts : Configures the standalone Angular application by providing services, routing, and other application-wide settings.
+
+7. src/app/app.ts : Defines the root Angular component that controls the application's main view and logic.
+
+8. src/index.html : The single HTML page loaded by the browser that hosts the Angular application.
+
+
+Task 1.4
+
+After running ng build, Angular generates the production-ready application inside the dist/ folder.
+
+Generated files:
+- browser/index.html → Entry HTML page served to the browser.
+- browser/main-<hash>.js → Compiled Angular application code (main application bundle).
+- browser/styles-<hash>.css → Compiled global CSS styles.
+- favicon.ico → Website icon.
+- 3rdpartylicenses.txt → Third-party library license information.
+- prerendered-routes.json → Metadata for prerendered routes.
+
+
+
+Task 1.5
+
+The budgets section in angular.json controls the maximum allowed size of the application's build output.
+
+1. initial
+   - maximumWarning: 500kB → Angular shows a warning if the initial application bundle exceeds 500 KB.
+   - maximumError: 1MB → Angular stops the build if the initial bundle exceeds 1 MB.
+
+2. anyComponentStyle
+   - maximumWarning: 4kB → Shows a warning if a component's CSS file exceeds 4 KB.
+   - maximumError: 8kB → Stops the build if a component's CSS file exceeds 8 KB.
+
+These budgets help keep the application optimized and prevent large bundles that could slow down loading.
+"budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ]
