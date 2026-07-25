@@ -1,24 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Home } from './home';
+import { ReactiveEnrollmentForm } from './reactive-enrollment-form';
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
-import { provideMockStore } from '@ngrx/store/testing';
 
-describe('Home', () => {
-  let component: Home;
-  let fixture: ComponentFixture<Home>;
+describe('ReactiveEnrollmentForm', () => {
+  let component: ReactiveEnrollmentForm;
+  let fixture: ComponentFixture<ReactiveEnrollmentForm>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Home],
+      imports: [ReactiveEnrollmentForm],
       providers: [
         provideHttpClient(),
-        provideRouter([]),
-        provideMockStore()
+        provideRouter([])
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Home);
+    fixture = TestBed.createComponent(ReactiveEnrollmentForm);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
