@@ -17,21 +17,21 @@ export class Home implements OnInit, OnDestroy {
   isPortalActive = true;
   message = '';
   searchTerm = '';
+  availableCoursesCount = 0;
 
   constructor(
     private courseService: CourseService,
     private enrollmentService: EnrollmentService
   ) {}
 
-  get availableCourses(): number {
-    return this.courseService.getCourses().length;
-  }
-
   get enrolledCoursesCount(): number {
     return this.enrollmentService.getEnrolledCourses().length;
   }
 
   ngOnInit(): void {
+    this.courseService.getCourses().subscribe((courses) => {
+      this.availableCoursesCount = courses.length;
+    });
     console.log('HomeComponent initialised - course loaded');
   }
 

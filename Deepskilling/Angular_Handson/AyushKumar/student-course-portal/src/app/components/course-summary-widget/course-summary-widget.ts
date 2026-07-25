@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../../services/course.service';
 
 @Component({
@@ -8,21 +8,30 @@ import { CourseService } from '../../services/course.service';
   templateUrl: './course-summary-widget.html',
   styleUrl: './course-summary-widget.css'
 })
-export class CourseSummaryWidget {
+export class CourseSummaryWidget implements OnInit {
+  totalCourses = 0;
+
   constructor(private courseService: CourseService) {}
 
-  get totalCourses(): number {
-    return this.courseService.getCourses().length;
+  ngOnInit(): void {
+    this.loadCount();
+  }
+
+  loadCount(): void {
+    this.courseService.getCourses().subscribe((courses) => {
+      this.totalCourses = courses.length;
+    });
   }
 
   addDemoCourse(): void {
-    const id = Date.now();
-    this.courseService.addCourse({
-      id: id,
-      name: `New Elective ${id % 100}`,
-      code: `ELC${id % 1000}`,
+    const idNum = Date.now();
+    this.courseService.createCourse({
+      name: `New Elective ${idNum % 100}`,
+      code: `ELC${idNum % 1000}`,
       credits: 3,
       gradeStatus: 'pending'
+    }).subscribe(() => {
+      this.loadCount();
     });
   }
 }

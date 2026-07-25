@@ -9,9 +9,11 @@
   />
 </div>
 
-<p *ngIf="isLoading">Loading courses...</p>
+<p *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</p>
 
-<div *ngIf="!isLoading">
+<p *ngIf="isLoading && !errorMessage">Loading courses...</p>
+
+<div *ngIf="!isLoading && !errorMessage">
 
   <ng-container *ngIf="filteredCourses.length > 0; else noCourses">
     <div *ngFor="let c of filteredCourses; let i = index; trackBy: trackByCourseId" class="clickable-card-wrapper">

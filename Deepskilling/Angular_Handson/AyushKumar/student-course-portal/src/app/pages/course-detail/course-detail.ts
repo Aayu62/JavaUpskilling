@@ -24,7 +24,10 @@ export class CourseDetail implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
-      this.course = this.courseService.getCourseById(id);
+      this.courseService.getCourseById(id).subscribe({
+        next: (c) => (this.course = c),
+        error: () => (this.course = undefined)
+      });
     });
   }
 

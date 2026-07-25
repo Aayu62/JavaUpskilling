@@ -19,6 +19,7 @@ export class CourseList implements OnInit {
   selectedCourseId: number | null = null;
   courses: Course[] = [];
   searchTerm = '';
+  errorMessage = '';
 
   constructor(
     private courseService: CourseService,
@@ -32,10 +33,11 @@ export class CourseList implements OnInit {
       this.searchTerm = search;
     }
 
-    setTimeout(() => {
-      this.courses = this.courseService.getCourses();
-      this.isLoading = false;
-    }, 1500);
+    this.courseService.getCourses().subscribe({
+      next: (courses) => (this.courses = courses),
+      error: (err) => (this.errorMessage = err.message),
+      complete: () => (this.isLoading = false)
+    });
   }
 
   onSearchChange(): void {
@@ -48,9 +50,10 @@ export class CourseList implements OnInit {
     if (!this.searchTerm.trim()) {
       return this.courses;
     }
-    return this.courses.filter((c) =>
-      c.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      c.code.toLowerCase().includes(this.searchTerm.toLowerCase())
+    return this.courses.filter(
+      (c) =>
+        c.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        c.code.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
 

@@ -1,0 +1,59 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "name": "Angular Fundamentals",
+      "code": "ANG101",
+      "credits": 4,
+      "gradeStatus": "passed"
+    },
+    {
+      "id": "2",
+      "name": "Data Structures",
+      "code": "CSE201",
+      "credits": 3,
+      "gradeStatus": "failed"
+    },
+    {
+      "id": "3",
+      "name": "Database Systems",
+      "code": "DB301",
+      "credits": 4,
+      "gradeStatus": "pending"
+    },
+    {
+      "id": "4",
+      "name": "Operating Systems",
+      "code": "OS401",
+      "credits": 3,
+      "gradeStatus": "passed"
+    },
+    {
+      "id": "5",
+      "name": "Computer Networks",
+      "code": "CN501",
+      "credits": 4,
+      "gradeStatus": "pending"
+    }
+  ],
+  "students": [
+    {
+      "id": "1",
+      "name": "Ayush Kumar",
+      "email": "ayush@example.com",
+      "enrolledCourseIds": [1, 3]
+    }
+  ],
+  "enrollments": [
+    {
+      "id": "1",
+      "studentId": 1,
+      "courseId": 1
+    },
+    {
+      "id": "2",
+      "studentId": 1,
+      "courseId": 3
+    }
+  ]
+}
