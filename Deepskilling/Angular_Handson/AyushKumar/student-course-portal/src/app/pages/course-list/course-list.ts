@@ -1,43 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseCard } from '../../components/course-card/course-card';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf, AsyncPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from '../../directives/highlight.directive';
-import { CourseService } from '../../services/course.service';
 import { Course } from '../../models/course.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { loadCourses } from '../../store/course/course.actions';
+import { selectAllCourses, selectCoursesLoading, selectCoursesError } from '../../store/course/course.selectors';
 
 @Component({
   selector: 'app-course-list',
   standalone: true,
-  imports: [CourseCard, NgFor, NgIf, FormsModule, HighlightDirective],
+  imports: [CourseCard, NgFor, NgIf, AsyncPipe, FormsModule, HighlightDirective],
   templateUrl: './course-list.html',
   styleUrl: './course-list.css'
 })
 export class CourseList implements OnInit {
-  isLoading = true;
+  courses$: Observable<Course[]>;
+  isLoading$: Observable<boolean>;
+  errorMessage$: Observable<string | null>;
   selectedCourseId: number | null = null;
-  courses: Course[] = [];
   searchTerm = '';
-  errorMessage = '';
 
   constructor(
-    private courseService: CourseService,
+    private store: Store,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.courses$ = this.store.select(selectAllCourses);
+    this.isLoading$ = this.store.select(selectCoursesLoading);
+    this.errorMessage$ = this.store.select(selectCoursesError);
+  }
 
   ngOnInit(): void {
     const search = this.route.snapshot.queryParamMap.get('search');
     if (search) {
       this.searchTerm = search;
     }
-
-    this.courseService.getCourses().subscribe({
-      next: (courses) => (this.courses = courses),
-      error: (err) => (this.errorMessage = err.message),
-      complete: () => (this.isLoading = false)
-    });
+    this.store.dispatch(loadCourses());
   }
 
   onSearchChange(): void {
@@ -46,14 +49,18 @@ export class CourseList implements OnInit {
     });
   }
 
-  get filteredCourses(): Course[] {
-    if (!this.searchTerm.trim()) {
-      return this.courses;
-    }
-    return this.courses.filter(
-      (c) =>
-        c.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        c.code.toLowerCase().includes(this.searchTerm.toLowerCase())
+  get filteredCourses$(): Observable<Course[]> {
+    return this.courses$.pipe(
+      map((courses) => {
+        if (!this.searchTerm.trim()) {
+          return courses;
+        }
+        return courses.filter(
+          (c) =>
+            c.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+            c.code.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+      })
     );
   }
 

@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
-import { EnrollmentService } from '../../services/enrollment.service';
 import { Course } from '../../models/course.model';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf, AsyncPipe } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectEnrolledCourses } from '../../store/enrollment/enrollment.selectors';
 
 @Component({
   selector: 'app-student-profile',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor, NgIf, AsyncPipe],
   templateUrl: './student-profile.html',
   styleUrl: './student-profile.css',
 })
 export class StudentProfile {
-  constructor(private enrollmentService: EnrollmentService) {}
+  enrolledCourses$: Observable<Course[]>;
 
-  get enrolledCourses(): Course[] {
-    return this.enrollmentService.getEnrolledCourses();
+  constructor(private store: Store) {
+    this.enrolledCourses$ = this.store.select(selectEnrolledCourses);
   }
 }

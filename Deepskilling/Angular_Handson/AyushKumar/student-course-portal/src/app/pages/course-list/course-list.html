@@ -9,22 +9,24 @@
   />
 </div>
 
-<p *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</p>
+<p *ngIf="errorMessage$ | async as err" class="error-msg">{{ err }}</p>
 
-<p *ngIf="isLoading && !errorMessage">Loading courses...</p>
+<p *ngIf="isLoading$ | async">Loading courses...</p>
 
-<div *ngIf="!isLoading && !errorMessage">
+<div *ngIf="!(isLoading$ | async)">
 
-  <ng-container *ngIf="filteredCourses.length > 0; else noCourses">
-    <div *ngFor="let c of filteredCourses; let i = index; trackBy: trackByCourseId" class="clickable-card-wrapper">
-      <div (click)="onCourseClick(c.id)">
-        <app-course-card
-          [course]="c"
-          [appHighlight]="'yellow'"
-          (enrollRequested)="onEnroll($event)">
-        </app-course-card>
+  <ng-container *ngIf="(filteredCourses$ | async) as courseList">
+    <ng-container *ngIf="courseList.length > 0; else noCourses">
+      <div *ngFor="let c of courseList; let i = index; trackBy: trackByCourseId" class="clickable-card-wrapper">
+        <div (click)="onCourseClick(c.id)">
+          <app-course-card
+            [course]="c"
+            [appHighlight]="'yellow'"
+            (enrollRequested)="onEnroll($event)">
+          </app-course-card>
+        </div>
       </div>
-    </div>
+    </ng-container>
   </ng-container>
 
   <ng-template #noCourses>

@@ -1,5 +1,13 @@
-<div class="course-card" [ngClass]="cardClasses" [ngStyle]="cardStyle">
-
+<div
+  *ngIf="(enrolledIds$ | async) as enrolledIds"
+  class="course-card"
+  [ngClass]="{
+    'card--enrolled': enrolledIds.includes(course.id),
+    'card--full': course.credits >= 4,
+    'expanded': isExpanded
+  }"
+  [ngStyle]="cardStyle"
+>
   <div class="card-header">
     <h3>{{ course.name }}</h3>
 
@@ -17,8 +25,8 @@
   <p><strong>Credits:</strong> {{ course.credits | creditLabel }}</p>
 
   <div class="actions">
-    <button (click)="toggleEnrollment()" class="btn-enroll">
-      {{ isCurrentlyEnrolled ? 'Unenroll' : 'Enroll' }}
+    <button (click)="toggleEnrollment(enrolledIds.includes(course.id))" class="btn-enroll">
+      {{ enrolledIds.includes(course.id) ? 'Unenroll' : 'Enroll' }}
     </button>
 
     <button (click)="toggleDetails()" class="btn-details">
@@ -29,5 +37,4 @@
   <div *ngIf="isExpanded" class="extra-details">
     <p><em>Detailed course overview: Core module for computer science curriculum.</em></p>
   </div>
-
 </div>

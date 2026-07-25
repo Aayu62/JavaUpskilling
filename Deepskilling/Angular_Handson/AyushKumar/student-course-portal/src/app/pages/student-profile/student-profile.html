@@ -9,10 +9,12 @@
 
 <h3>Enrolled Courses</h3>
 
-<p *ngIf="enrolledCourses.length === 0">No enrolled courses yet.</p>
+<ng-container *ngIf="(enrolledCourses$ | async) as enrolledList">
+  <p *ngIf="enrolledList.length === 0">No enrolled courses yet.</p>
 
-<ul *ngIf="enrolledCourses.length > 0" class="enrolled-list">
-  <li *ngFor="let course of enrolledCourses">
-    <strong>{{ course.code }}:</strong> {{ course.name }} ({{ course.credits }} Credits) - <span class="badge">{{ course.gradeStatus }}</span>
-  </li>
-</ul>
+  <ul *ngIf="enrolledList.length > 0" class="enrolled-list">
+    <li *ngFor="let course of enrolledList">
+      <strong>{{ course.code }}:</strong> {{ course.name }} ({{ course.credits }} Credits) - <span class="badge">{{ course.gradeStatus }}</span>
+    </li>
+  </ul>
+</ng-container>
