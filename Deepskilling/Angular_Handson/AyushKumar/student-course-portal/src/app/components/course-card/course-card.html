@@ -1,15 +1,35 @@
-<div class="course-card">
+<div class="course-card" [ngClass]="cardClasses" [ngStyle]="cardStyle">
 
-  <h3>{{ course.name }}</h3>
+  <div class="card-header">
+    <h3>{{ course.name }}</h3>
+
+    <!-- Structural Directive: *ngSwitch -->
+    <div [ngSwitch]="course.gradeStatus" class="status-container">
+      <span *ngSwitchCase="'passed'" class="badge badge-passed">Passed</span>
+      <span *ngSwitchCase="'failed'" class="badge badge-failed">Failed</span>
+      <span *ngSwitchCase="'pending'" class="badge badge-pending">Pending</span>
+      <span *ngSwitchDefault class="badge badge-pending">Pending</span>
+    </div>
+  </div>
 
   <p><strong>ID:</strong> {{ course.id }}</p>
-
   <p><strong>Code:</strong> {{ course.code }}</p>
 
-  <p><strong>Credits:</strong> {{ course.credits }}</p>
+  <!-- Custom Pipe Transform: creditLabel -->
+  <p><strong>Credits:</strong> {{ course.credits | creditLabel }}</p>
 
-  <button (click)="enrollRequested.emit(course.id)">
-    Enroll
-  </button>
+  <div class="actions">
+    <button (click)="onEnrollClick()" [disabled]="isEnrolled" class="btn-enroll">
+      {{ isEnrolled ? 'Enrolled' : 'Enroll' }}
+    </button>
+
+    <button (click)="toggleDetails()" class="btn-details">
+      {{ isExpanded ? 'Hide Details' : 'Show Details' }}
+    </button>
+  </div>
+
+  <div *ngIf="isExpanded" class="extra-details">
+    <p><em>Detailed course overview: Core module for computer science curriculum.</em></p>
+  </div>
 
 </div>

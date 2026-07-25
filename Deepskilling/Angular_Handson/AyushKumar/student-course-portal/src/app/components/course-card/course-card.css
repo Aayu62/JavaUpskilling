@@ -1,11 +1,86 @@
 .course-card {
-
-  border: 1px solid #ccc;
-
+  padding: 16px;
+  margin-bottom: 16px;
   border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
 
-  padding: 15px;
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  margin-bottom: 15px;
+/* Task 2: Attribute Directive - ngClass dynamic styles */
+.card--enrolled {
+  background-color: #f0fdf4;
+}
 
+.card--full {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.expanded {
+  min-height: 180px;
+  border-right: 3px solid #2563eb;
+}
+
+/* Status Badges */
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+}
+
+.badge-passed {
+  background-color: #16a34a;
+}
+
+.badge-failed {
+  background-color: #dc2626;
+}
+
+.badge-pending {
+  background-color: #6b7280;
+}
+
+.actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-enroll {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-enroll:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+.btn-details {
+  background-color: #e5e7eb;
+  color: #374151;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.extra-details {
+  margin-top: 12px;
+  padding: 10px;
+  background-color: #f8fafc;
+  border-radius: 4px;
 }
