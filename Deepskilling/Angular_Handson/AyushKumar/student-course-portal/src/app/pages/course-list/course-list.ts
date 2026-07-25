@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CourseCard } from '../../components/course-card/course-card';
 import { NgFor, NgIf } from '@angular/common';
 import { HighlightDirective } from '../../directives/highlight.directive';
+import { CourseService } from '../../services/course.service';
+import { Course } from '../../models/course.model';
 
 @Component({
   selector: 'app-course-list',
@@ -11,55 +13,20 @@ import { HighlightDirective } from '../../directives/highlight.directive';
   styleUrl: './course-list.css'
 })
 export class CourseList implements OnInit {
-
   isLoading = true;
   selectedCourseId: number | null = null;
+  courses: Course[] = [];
 
-  courses = [
-    {
-      id: 1,
-      name: 'Angular Fundamentals',
-      code: 'ANG101',
-      credits: 4,
-      gradeStatus: 'passed'
-    },
-    {
-      id: 2,
-      name: 'Data Structures',
-      code: 'CSE201',
-      credits: 3,
-      gradeStatus: 'failed'
-    },
-    {
-      id: 3,
-      name: 'Database Systems',
-      code: 'DB301',
-      credits: 4,
-      gradeStatus: 'pending'
-    },
-    {
-      id: 4,
-      name: 'Operating Systems',
-      code: 'OS401',
-      credits: 3,
-      gradeStatus: 'passed'
-    },
-    {
-      id: 5,
-      name: 'Computer Networks',
-      code: 'CN501',
-      credits: 4,
-      gradeStatus: 'pending'
-    }
-  ];
+  constructor(private courseService: CourseService) {}
 
   ngOnInit(): void {
     setTimeout(() => {
+      this.courses = this.courseService.getCourses();
       this.isLoading = false;
     }, 1500);
   }
 
-  trackByCourseId(index: number, course: any): number {
+  trackByCourseId(index: number, course: Course): number {
     return course.id;
   }
 
@@ -67,5 +34,4 @@ export class CourseList implements OnInit {
     console.log('Enrolling in course:', courseId);
     this.selectedCourseId = courseId;
   }
-
 }

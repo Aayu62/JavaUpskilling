@@ -13,7 +13,7 @@
 
   <div class="card">
     <h3>Enrolled</h3>
-    <p>3</p>
+    <p>{{ enrolledCoursesCount }}</p>
   </div>
 
   <div class="card">
@@ -23,8 +23,7 @@
 </div>
 <hr>
 
-<button [disabled]="!isPortalActive"
-        (click)="onEnrollClick()">
+<button [disabled]="!isPortalActive" (click)="onEnrollClick()">
   Enroll Now
 </button>
 
@@ -39,14 +38,5 @@
 
 <p>Searching for: {{ searchTerm }}</p>
 
-<!-- [property] is one-way binding -->
-<!-- Example: [disabled]="!isPortalActive" -->
-<!-- Means: the value comes from the component -->
-<!-- If component changes, DOM updates -->
-<!-- But typing/clicking in DOM does NOT change the component -->
-
-<!-- [(ngModel)] is two-way binding -->
-<!-- Example: [(ngModel)]="searchTerm" -->
-<!-- Means: value flows both ways -->
-<!-- If component changes, DOM updates -->
-<!-- If user types in DOM, component updates too -->
+<app-course-summary-widget></app-course-summary-widget>
+<app-notification></app-notification>

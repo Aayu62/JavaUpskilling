@@ -3,7 +3,6 @@
   <div class="card-header">
     <h3>{{ course.name }}</h3>
 
-    <!-- Structural Directive: *ngSwitch -->
     <div [ngSwitch]="course.gradeStatus" class="status-container">
       <span *ngSwitchCase="'passed'" class="badge badge-passed">Passed</span>
       <span *ngSwitchCase="'failed'" class="badge badge-failed">Failed</span>
@@ -15,12 +14,11 @@
   <p><strong>ID:</strong> {{ course.id }}</p>
   <p><strong>Code:</strong> {{ course.code }}</p>
 
-  <!-- Custom Pipe Transform: creditLabel -->
   <p><strong>Credits:</strong> {{ course.credits | creditLabel }}</p>
 
   <div class="actions">
-    <button (click)="onEnrollClick()" [disabled]="isEnrolled" class="btn-enroll">
-      {{ isEnrolled ? 'Enrolled' : 'Enroll' }}
+    <button (click)="toggleEnrollment()" class="btn-enroll">
+      {{ isCurrentlyEnrolled ? 'Unenroll' : 'Enroll' }}
     </button>
 
     <button (click)="toggleDetails()" class="btn-details">

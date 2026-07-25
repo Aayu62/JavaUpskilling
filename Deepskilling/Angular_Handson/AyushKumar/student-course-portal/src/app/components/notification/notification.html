@@ -1,0 +1,10 @@
+<div class="notification-box">
+  <h4>Scoped Notifications</h4>
+  <div class="input-row">
+    <input #msgInput type="text" placeholder="Type notification..." />
+    <button type="button" (click)="addNotification(msgInput.value); msgInput.value = ''">Add</button>
+  </div>
+  <ul>
+    <li *ngFor="let m of notificationService.getMessages()">{{ m }}</li>
+  </ul>
+</div>

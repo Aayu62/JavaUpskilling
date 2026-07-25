@@ -1,0 +1,21 @@
+.summary-widget {
+  padding: 12px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  margin-top: 12px;
+}
+
+.summary-widget h4 {
+  margin-top: 0;
+  color: #334155;
+}
+
+.summary-widget button {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}

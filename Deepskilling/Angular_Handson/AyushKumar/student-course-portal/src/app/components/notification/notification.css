@@ -1,0 +1,33 @@
+.notification-box {
+  border: 1px dashed #93c5fd;
+  background-color: #eff6ff;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 12px;
+}
+
+.notification-box h4 {
+  margin-top: 0;
+  color: #1e40af;
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.input-row input {
+  padding: 4px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+}
+
+.input-row button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}

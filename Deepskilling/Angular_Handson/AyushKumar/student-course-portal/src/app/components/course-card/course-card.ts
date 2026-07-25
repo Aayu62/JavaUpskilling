@@ -1,6 +1,8 @@
 import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { NgClass, NgStyle, NgSwitch, NgSwitchCase, NgSwitchDefault, NgIf } from '@angular/common';
 import { CreditLabelPipe } from '../../pipes/credit-label.pipe';
+import { EnrollmentService } from '../../services/enrollment.service';
+import { Course } from '../../models/course.model';
 
 @Component({
   selector: 'app-course-card',
@@ -10,34 +12,28 @@ import { CreditLabelPipe } from '../../pipes/credit-label.pipe';
   styleUrl: './course-card.css',
 })
 export class CourseCard implements OnChanges {
-
   @Input()
-  course!: {
-    id: number;
-    name: string;
-    code: string;
-    credits: number | null;
-    gradeStatus?: string;
-  };
-
-  @Input()
-  isEnrolled: boolean = false;
+  course!: Course;
 
   @Output()
   enrollRequested = new EventEmitter<number>();
 
   isExpanded: boolean = false;
 
-  // Getters keep templates clean by encapsulating dynamic class calculation logic in TypeScript
+  constructor(private enrollmentService: EnrollmentService) {}
+
+  get isCurrentlyEnrolled(): boolean {
+    return this.enrollmentService.isEnrolled(this.course.id);
+  }
+
   get cardClasses() {
     return {
-      'card--enrolled': this.isEnrolled,
+      'card--enrolled': this.isCurrentlyEnrolled,
       'card--full': (this.course?.credits ?? 0) >= 4,
       'expanded': this.isExpanded
     };
   }
 
-  // Dynamic inline styling calculated for [ngStyle] binding based on gradeStatus
   get cardStyle() {
     let color = 'grey';
     if (this.course?.gradeStatus === 'passed') {
@@ -57,9 +53,13 @@ export class CourseCard implements OnChanges {
     this.isExpanded = !this.isExpanded;
   }
 
-  onEnrollClick(): void {
-    this.isEnrolled = true;
-    this.enrollRequested.emit(this.course.id);
+  toggleEnrollment(): void {
+    if (this.isCurrentlyEnrolled) {
+      this.enrollmentService.unenroll(this.course.id);
+    } else {
+      this.enrollmentService.enroll(this.course.id);
+      this.enrollRequested.emit(this.course.id);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -67,5 +67,4 @@ export class CourseCard implements OnChanges {
     console.log('Previous Value:', changes['course']?.previousValue);
     console.log('Current Value:', changes['course']?.currentValue);
   }
-
 }

@@ -1,3 +1,18 @@
 <h2>Student Profile</h2>
 
-<p>This is the Student Profile page.</p>
+<div class="profile-card">
+  <h3>Student Information</h3>
+  <p><strong>Name:</strong> Ayush Kumar</p>
+  <p><strong>Program:</strong> .NET Full Stack Engineer Track</p>
+  <p><strong>GPA:</strong> 3.8</p>
+</div>
+
+<h3>Enrolled Courses</h3>
+
+<p *ngIf="enrolledCourses.length === 0">No enrolled courses yet.</p>
+
+<ul *ngIf="enrolledCourses.length > 0" class="enrolled-list">
+  <li *ngFor="let course of enrolledCourses">
+    <strong>{{ course.code }}:</strong> {{ course.name }} ({{ course.credits }} Credits) - <span class="badge">{{ course.gradeStatus }}</span>
+  </li>
+</ul>
