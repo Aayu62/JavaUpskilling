@@ -1,0 +1,29 @@
+.detail-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #ffffff;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.badge {
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 4px 8px;
+  background-color: #e2e8f0;
+  border-radius: 4px;
+}
+
+.actions {
+  margin-top: 16px;
+}
+
+.btn-secondary {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}

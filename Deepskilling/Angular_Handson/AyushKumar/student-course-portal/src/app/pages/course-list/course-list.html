@@ -1,20 +1,32 @@
 <h2>Course List</h2>
 
+<div class="search-bar">
+  <input
+    type="text"
+    placeholder="Search courses by name or code..."
+    [(ngModel)]="searchTerm"
+    (ngModelChange)="onSearchChange()"
+  />
+</div>
+
 <p *ngIf="isLoading">Loading courses...</p>
 
 <div *ngIf="!isLoading">
 
-  <ng-container *ngIf="courses.length > 0; else noCourses">
-    <app-course-card
-      *ngFor="let c of courses; let i = index; trackBy: trackByCourseId"
-      [course]="c"
-      [appHighlight]="'yellow'"
-      (enrollRequested)="onEnroll($event)">
-    </app-course-card>
+  <ng-container *ngIf="filteredCourses.length > 0; else noCourses">
+    <div *ngFor="let c of filteredCourses; let i = index; trackBy: trackByCourseId" class="clickable-card-wrapper">
+      <div (click)="onCourseClick(c.id)">
+        <app-course-card
+          [course]="c"
+          [appHighlight]="'yellow'"
+          (enrollRequested)="onEnroll($event)">
+        </app-course-card>
+      </div>
+    </div>
   </ng-container>
 
   <ng-template #noCourses>
-    <p>No courses available.</p>
+    <p>No courses available matching search criteria.</p>
   </ng-template>
 
   <p *ngIf="selectedCourseId" class="selected-info">
